@@ -4,7 +4,7 @@
  - `ln -s ~/path_to/pkg` (Run from `~/16.485-VNAV/vnav_ws/src`): creates a symbolic link of that package into the workspace folder `vnav_ws/src`
 
 ### Tools Clipboard
- - `colcon build --symlink-install --packages-select <package-name>`
+ - `colcon build --symlink-install --packages-select <package-name>` (Run from `vnav_ws`)
  - `source install/setup.bash`
  - `ros2 node list`
  - `ros2 topic list`
