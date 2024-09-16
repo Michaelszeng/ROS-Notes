@@ -5,6 +5,7 @@
 
 ### Tools Clipboard
  - `colcon build --symlink-install --packages-select <package-name>`
+ - `source install/setup.bash`
  - `ros2 node list`
  - `ros2 topic list`
  - `ros2 topic echo <topic-name>` (prints topic messages to terminal)
