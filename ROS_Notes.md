@@ -318,8 +318,21 @@ void on_timer() {
     geometry_msgs::msg::TransformStamped t;
 
     // Look up for the transformation between target_frame and turtle2 frames
+
+    // VERSION 1: BLOCKS FOR UP TO rclcpp::Duration(1.0) IF NO TRAINSFORM IS AVAILABLE
+    // Check if the transform is available within a timeout period
+    // tf2::TimePointZero retrieves latest transform in buffer
+    if (tfBuffer.canTransform(toFrameRel, fromFrameRel, tf2::TimePointZero, rclcpp::Duration(1.0))) {
+        // The transform is available, now we can safely retrieve it
+        geometry_msgs::msg::TransformStamped transformStamped;
+        transformStamped = tfBuffer.lookupTransform(toFrameRel, fromFrameRel, tf2::TimePointZero);
+    } else {
+        RCLCPP_WARN(node->get_logger(), "Transform not available between %s and %s", fromFrameRel.c_str(), toFrameRel.c_str());
+    }
+
+    // VERSION 2: DO NOT BLOCK, INSTEAD JUST RETURN
     try {
-        // tf2::TimePointZero retrieves latest transform
+        // tf2::TimePointZero retrieves latest transform in buffer
         t = tf_buffer_->lookupTransform(toFrameRel, 
                                         fromFrameRel,
                                         tf2::TimePointZero);
@@ -336,6 +349,7 @@ void on_timer() {
     // ...
 }
 ```
+Note: the way tf buffers work is that they always hold all transforms from the last (default 10) seconds. `lookupTransform()` with time parameter `tf2::TimePointZero` will continue to return the same transform until either a new transform enters the buffer or 10 seconds has passed (and the buffer is emptied).
 
 **Broadcasting a Frame**
 ```C++
