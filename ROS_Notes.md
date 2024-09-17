@@ -319,10 +319,10 @@ void on_timer() {
 
     // Look up for the transformation between target_frame and turtle2 frames
 
-    // VERSION 1: BLOCKS FOR UP TO rclcpp::Duration(1.0) IF NO TRAINSFORM IS AVAILABLE
+    // VERSION 1: BLOCKS FOR UP TIMEOUT IF NO TRANSFORM IS AVAILABLE
     // Check if the transform is available within a timeout period
     // tf2::TimePointZero retrieves latest transform in buffer
-    if (tfBuffer.canTransform(toFrameRel, fromFrameRel, tf2::TimePointZero, rclcpp::Duration(1.0))) {
+    if (tfBuffer.canTransform(toFrameRel, fromFrameRel, tf2::TimePointZero, rclcpp::Duration(std::chrono::milliseconds(100)))) {
         // The transform is available, now we can safely retrieve it
         geometry_msgs::msg::TransformStamped transformStamped;
         transformStamped = tfBuffer.lookupTransform(toFrameRel, fromFrameRel, tf2::TimePointZero);
@@ -330,7 +330,7 @@ void on_timer() {
         RCLCPP_WARN(this->get_logger(), "Transform not available between %s and %s", fromFrameRel.c_str(), toFrameRel.c_str());
     }
 
-    // VERSION 2: DO NOT BLOCK, INSTEAD JUST RETURN
+    // VERSION 2: DO NOT BLOCK, INSTEAD JUST RETURN IF NO TRANSFORMS AVAILABLE
     try {
         // tf2::TimePointZero retrieves latest transform in buffer
         t = tf_buffer_->lookupTransform(toFrameRel, 
