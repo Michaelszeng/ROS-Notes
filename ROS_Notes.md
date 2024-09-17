@@ -263,8 +263,7 @@ ros2 run tf2_ros static_transform_publisher --x x --y y --z z --qx qx --qy qy --
 std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 
 // Construct the publisher in the constructor
-tf_broadcaster_ =
-      std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 
 // Making and publishing a transform
 // Usually called in a subscriber callback, i.e. when new sensor data is received
