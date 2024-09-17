@@ -327,7 +327,7 @@ void on_timer() {
         geometry_msgs::msg::TransformStamped transformStamped;
         transformStamped = tfBuffer.lookupTransform(toFrameRel, fromFrameRel, tf2::TimePointZero);
     } else {
-        RCLCPP_WARN(node->get_logger(), "Transform not available between %s and %s", fromFrameRel.c_str(), toFrameRel.c_str());
+        RCLCPP_WARN(this->get_logger(), "Transform not available between %s and %s", fromFrameRel.c_str(), toFrameRel.c_str());
     }
 
     // VERSION 2: DO NOT BLOCK, INSTEAD JUST RETURN
