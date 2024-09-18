@@ -10,6 +10,7 @@
  - `ros2 topic list`
  - `ros2 topic echo <topic-name>` (prints topic messages to terminal)
  - `ros2 run rqt_graph rqt_grph`
+ - `ros2 run rqt_plot rqt_plot`
  - `ros2 run rqt_tf_tree rqt_tf_tree`
  - `ros2 run tf2_ros tf2_echo [reference_frame] [target_frame]`
 
@@ -17,6 +18,17 @@
 
  - `rviz2`
  - `rosbag?`
+
+### Colcon Commands
+- `VERBOSE=1 colcon build --event-handlers console_direct+`
+ - Print out low-level build commands
+- `colcon build --packages-up-to trajectory_generation`
+ - Build package and its dependencies
+- `colcon build --symlink-install`
+ - Installed files are symlinked to the src directory, so editing launch files (or python files?) doesn’t require re-building
+- `colcon clean packages / colcon clean workspace`
+ - Removes build / install directories
+
 
 
 <br /><br />
