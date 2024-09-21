@@ -24,7 +24,7 @@
 - `VERBOSE=1 colcon build --event-handlers console_direct+`: Print out low-level build commands
 - `colcon build --packages-up-to trajectory_generation`: Build package and its dependencies
 - `colcon build --symlink-install`: Installed files are symlinked to the src directory, so editing launch files & param files (or python files?) doesn’t require re-`colcon build`ing. Useful when tuning params.
-- `colcon clean packages / colcon clean workspace`: Removes build / install directories
+- `rm -r build install log` (then close the terminal as it may be bugged): Removes build / install directories
 
 
 
