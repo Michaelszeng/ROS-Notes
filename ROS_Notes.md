@@ -9,6 +9,7 @@
  - `ros2 node list`
  - `ros2 topic list`
  - `ros2 topic echo <topic-name>` (prints topic messages to terminal)
+ - `ros2 param get <param-name>`
  - `ros2 run rqt_graph rqt_grph`
  - `ros2 run rqt_plot rqt_plot`
  - `ros2 run rqt_tf_tree rqt_tf_tree`
