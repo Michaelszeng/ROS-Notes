@@ -396,6 +396,29 @@ Note: This code is near identical to a standard transform broadcaster, except th
 Note: If you want the "carrot1" frame to move relative to "turtle1", simply set the `t.transform` values dynamically instead of setting them to constants.
 
 
+## Rotations
+`geometry_msgs::msg::Quaternion` --> `tf2::Quaternion`: 
+```C++
+tf2::Quaternion quat_tf;
+tf2::fromMsg(quat_msg, quat_tf);
+```
+
+`tf2::Quaternion` --> `geometry_msgs::msg::Quaternion`: 
+```C++
+tf2::Quaternion quat_tf;
+// fill in quat_tf fields
+geometry_msgs::msg::Quaternion quat_msg = tf2::toMsg(quat_tf);
+```
+
+`geometry_msgs::msg::Quaternion` --> `Eigen 3x3`: 
+```C++
+Eigen::Quaterniond eigen_quat;
+tf2::fromMsg(quat_msg, eigen_quat);
+Eigen::Matrix3d R = eigen_quat.toRotationMatrix();
+```
+
+
+
 ## CMakeLists.txt
 ```bash
 # Add each executable Node file
