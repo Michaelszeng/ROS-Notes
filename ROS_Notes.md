@@ -1,7 +1,7 @@
 # ROS
 
 ### 16.485 Clipboard
- - `ln -s ~/path_to/pkg` (Run from `~/16.485-VNAV/vnav_ws/src`): creates a symbolic link of that package into the workspace folder `vnav_ws/src`
+ - `ln -s ~/16.485-VNAV/TEAM_1/lab5/* .` (Run from `~/16.485-VNAV/vnav_ws/lab5/src`): creates a symbolic link of allfiles in team repo folder into the workspace folder `vnav_ws/lab5/src`
 
 ### Tools Clipboard
  - `colcon build --symlink-install --packages-select <package-name>` (ONLY RUN FROM `vnav_ws/labX` so that builds are lab-specific)
