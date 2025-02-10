@@ -6,9 +6,12 @@
 ### Tools Clipboard
  - `colcon build --symlink-install --packages-select <package-name>` (ONLY RUN FROM `vnav_ws/labX` so that builds are lab-specific)
  - `source install/setup.bash`
+ - `ros2 pkg list`
  - `ros2 node list`
  - `ros2 topic list`
  - `ros2 topic echo <topic-name>` (prints topic messages to terminal)
+ - `ros2 topic type <topic_name>`
+ - `ros2 topic hz <topic-name>`
  - `ros2 param get <param-name>`
  - `ros2 run rqt_graph rqt_grph`
  - `ros2 run rqt_plot rqt_plot`
@@ -23,7 +26,7 @@
 ### Colcon Commands
 - `VERBOSE=1 colcon build --event-handlers console_direct+`: Print out low-level build commands
 - `colcon build --packages-up-to trajectory_generation`: Build package and its dependencies
-- `colcon build --symlink-install`: Installed files are symlinked to the src directory, so editing launch files & param files (or python files?) doesn’t require re-`colcon build`ing. Useful when tuning params.
+- `colcon build --symlink-install` (RUN FROM `ws` FOLDER, where `src/`, `build/`, `install/`, and `log/` are): Installed files are symlinked to the src directory, so editing launch files, param files, & python files doesn’t require re-`colcon build`ing. Useful when tuning params.
 - `rm -r build install log` (then close the terminal as it may be bugged): Removes build / install directories
 
 
