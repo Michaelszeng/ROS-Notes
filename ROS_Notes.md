@@ -18,6 +18,11 @@
  - `ros2 run rqt_tf_tree rqt_tf_tree`
  - `ros2 run tf2_ros tf2_echo [reference_frame] [target_frame]`
 
+ROS2 Debugging Guide
+- did you `source install/setup.bash`?
+- (if package not found) -- package.XML folder correct (no repeat dependencies)?
+- worst case: manually clear install folder
+
 <br />
 
  - `rviz2`
