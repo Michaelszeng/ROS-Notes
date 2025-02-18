@@ -184,6 +184,14 @@ Launch files located in `launch` folder in package.
 ros2 launch <package_name> <launch_file>
 ```
 
+Note: if your package is build/sourced correctly, you should not need to include any absolute path in the command; just include `launch_file.launch.xml`.
+
+Alternatively, include the full path:
+
+```bash
+ros2 launch <path_to_launch_file>
+```
+
 Example:
 ```yaml
 launch:
