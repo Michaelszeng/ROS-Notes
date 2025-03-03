@@ -25,15 +25,17 @@ ROS2 Debugging Guide
 
 <br />
 
- - `rviz2`
- - `rosbag?`
-
 ### Colcon Commands
 - `VERBOSE=1 colcon build --event-handlers console_direct+`: Print out low-level build commands
 - `colcon build --packages-up-to trajectory_generation`: Build package and its dependencies
 - `colcon build --symlink-install` (RUN FROM `ws` FOLDER, where `src/`, `build/`, `install/`, and `log/` are): Installed files are symlinked to the src directory, so editing launch files, param files, & python files doesn’t require re-`colcon build`ing. Useful when tuning params.
 - `rm -r build install log` (then close the terminal as it may be bugged): Removes build / install directories
 
+### ROSBag Commands
+- `rosbag record -O <bagname>.bag /topic1 /topic2` (to specify topics to record)
+- `rosbag record -O <bagname>.bag -a` (to record all topics)
+- `rosbag play <bagname>.bag`  (run from parent directory of the bag directory)
+- `rosbag info <bagname>.bag`  (run from parent directory of the bag directory)
 
 
 <br /><br />
